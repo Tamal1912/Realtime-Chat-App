@@ -10,7 +10,7 @@ export const signup=async (req,res)=>{
 
     if(password !== confirmPassword){
         return res.status(400).json("Passwords dont match");
-    }
+    }   
 
     const user=await User.findOne({username})
 
@@ -94,4 +94,10 @@ export const logout=(req,res)=>{
         console.log("Error in logout controller\n",error.message);
         res.status(500).json({error:"Internal Server Error"})
     }   
+}
+
+export const account=async(req,res)=>{
+    
+    let user=await User.findOne({username});
+    
 }
