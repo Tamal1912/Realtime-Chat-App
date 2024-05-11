@@ -24,8 +24,8 @@ export const signup=async (req,res)=>{
 
    // avatar link -> https://avatar.iran.liara.run/
 
-    const boyProfilePic=`https://avatar.iran.liara.run/public/boy?username=${user}`
-    const girlProfilePic=`https://avatar.iran.liara.run/public/boy?username=${user}`
+    const boyProfilePic=`https://avatar.iran.liara.run/public/boy?username=${username}`
+    const girlProfilePic=`https://avatar.iran.liara.run/public/boy?username=${username}`
 
     const newUser=new User({
         fullName,
@@ -45,17 +45,17 @@ export const signup=async (req,res)=>{
         _id:newUser._id,
         fullName:newUser.fullName,
         username:newUser.username,
-        profilePic:newUser.profilePic
+        profilePic:newUser.profilePic,
     })
     }else{
         res.status(400).json({error:"Invalid User Data"})
     }
 
-
-
-   } catch (error) {
+    
+} catch (error) {
     console.log("Error in signup controller\n",error.message);
-    res.status(500).json({error:"Internal Server Error"})
+    console.log("hey errr here");
+    res.status(500).json({error:"Internal Server Error signup"})
    }
 }
 
@@ -96,8 +96,3 @@ export const logout=(req,res)=>{
     }   
 }
 
-export const account=async(req,res)=>{
-    
-    let user=await User.findOne({username});
-    
-}
